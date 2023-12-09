@@ -2,8 +2,10 @@ import express from "express";
 import axios from "axios";
 import * as cheerio from "cheerio";
 import * as say from "say";
+import dotenv from 'dotenv';
 
 const app = express();
+app.use(dotenv/config);
 // const sec = <section class='story-section'><p></p></section>;
 
 app.listen(9000, () => {
