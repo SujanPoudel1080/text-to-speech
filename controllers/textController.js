@@ -1,18 +1,9 @@
-import * as say from "say";
-const tts = new say.Say("darwin");
+import { toSpeech } from "../utils/say.js";
 
 export const newText = async (req, res) => {
-  console.log(req.body);
   const { text } = req.body;
-  tts.speak(text, "Alex", 1, (err) => {
-    if (err) {
-      console.error(err);
-    //   process.exit();
-    }
-    console.log("successfully converted text to speech");
-
-    // process.exit();
-  });
-
+  //   const voices = say.getInstalledVoices();
+  //   console.log(voices);
+  toSpeech(text);
   res.status(200);
 };
