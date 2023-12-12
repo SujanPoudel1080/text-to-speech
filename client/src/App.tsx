@@ -1,20 +1,19 @@
-import { Form } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
+import TextForm from "./components/TextForm";
+import { action as textAction } from "./components/TextForm";
 
+const routes = createBrowserRouter([
+  {
+    path: "/tts",
+    element: <TextForm />,
+    action: textAction,
+  },
+]);
 // export const action = async ({ request: any }) => {};
 
 const App: React.FC = () => {
-  return (
-    <Form>
-      <label htmlFor="tts">Enter text to turn to speech</label>
-      <input
-        id="tts"
-        type="text"
-        className="form-input"
-        placeholder="enter text to turn to speech"
-      />
-    </Form>
-  );
+  return <RouterProvider router={routes} />;
 };
 
 export default App;
