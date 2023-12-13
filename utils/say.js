@@ -1,15 +1,27 @@
 import * as say from "say";
-const tts = new say.Say("darwin");
+import fs from "fs";
+const tts = new say.Say("darwin" || "win32" || "linux");
 
 export const toSpeech = (text) => {
-  return tts.speak(text, "Victoria", 1, (err) => {
+  return tts.speak(text, "Victoria", 2, (err) => {
     if (err) {
       console.error(err);
-      //   process.exit();
     }
+    console.log(text);
     console.log("successfully converted text to speech");
-
-    // process.exit();
   });
 };
 
+export const exportAudio = (text) => {
+  return tts.export(text, "Alex", 1, "./audio.wav", (err) => {
+    if (err) {
+      return console.error(err);
+    }
+    console.log(text);
+    console.log("Text has been saved to audio.wav.");
+  });
+};
+
+export const stopSpeech = () => {
+  tts.stop();
+};
